@@ -34,12 +34,13 @@ function Snake() {
         }
         this.body = newBody;
         if (this.head === food) {
+            score++;
             let avab = [];
             for (let i = 0; i < amount ** 2; i++) avab.push(i);
             avab = avab.filter(i => !snake.body.includes(i));
+            if (avab.length === 0) return gameover = "Well Done! You Win!";
             food = avab[Math.floor(Math.random() * avab.length)];
             append = this.body[this.body.length - 1];
-            score++;
         }
         if (this.body.slice(1).includes(this.head)) gameover = "You Hit Yourself";
     }
